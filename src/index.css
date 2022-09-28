@@ -17,10 +17,12 @@
   --secondary-pale: #53e0d7;
   --grey-blue: #6D9491;
   --warning: #FF8B8B;
+  --delete: #e61919;
   --btn-shadow: 0px 1px 3px 1px rgba(199, 199, 199, 0.8);
 }
 body {
  font-size: 62.5%;
  background: linear-gradient(90deg, var(--black), var(--dark-blue));
- color: var(--white);
+ color: var(--dark-blue);
+ font-family: 'Karla', sans-serif;
 }
