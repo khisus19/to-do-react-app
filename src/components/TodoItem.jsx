@@ -11,6 +11,7 @@ export default function TodoItem(props) {
       <img 
         className="todo-icon delete"
         src="./garbage-bin.svg"
+        onClick={props.delete}
       />
     </li>
   )
