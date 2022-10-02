@@ -16,12 +16,17 @@ function App() {
   const [todosCount, setTodosCount] = useState(0)
   const [searchInputValue, setSearchInputValue] = useState("")
 
-  const completedTodos = todos.filter(item => item.completed).length
+  const filteredTodos = todos.filter(item => {
+    let regexp = RegExp(searchInputValue, 'ig')
+    return regexp.test(item.text)
+  })
+
+  const completedTodos = filteredTodos.filter(item => item.completed).length
 
   
   useEffect(() => {
-    return setTodosCount(todos.length)
-  }, [todos])
+    return setTodosCount(filteredTodos.length)
+  }, [searchInputValue])
 
   function handleNewTodo(newTodo) {
     setTodos(prevTodos => ([
@@ -38,10 +43,7 @@ function App() {
     setSearchInputValue(input)
   }
 
-  const filteredTodos = todos.filter(item => {
-    let regexp = RegExp(searchInputValue, 'ig')
-    return regexp.test(item.text)
-  })
+  
 
   return (
     <div className="App">
