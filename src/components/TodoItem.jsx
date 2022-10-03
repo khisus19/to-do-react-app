@@ -4,7 +4,8 @@ import "../styles/TodoItem.css"
 export default function TodoItem(props) {
 
   return (
-    <li className={props.completed ? "todo-item completed" : "todo-item"}>
+    <li className={props.completed ? "todo-item completed" : "todo-item"}
+      onClick={() => props.handle_complete(props.id)}>
       <img 
       src={props.completed ? "./check-icon.svg" : "./check-icon-dark.svg"} 
       className="todo-icon" />

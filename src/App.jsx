@@ -35,7 +35,6 @@ function App() {
   }
 
   function handleDelete(id) {
-    const newTodosArr = []
     setTodos(prevTodos => {
       return prevTodos.filter(item => item.id !== id)
     })
@@ -44,6 +43,12 @@ function App() {
   function handleSearch(event) {
     const input = event.target.value
     setSearchInputValue(input)
+  }
+
+  function handleComplete(id) {
+    setTodos(prevTodos => {
+      return prevTodos.map(item => item.id === id ? {...item, completed: !item.completed} : item)
+    })
   }
 
   
@@ -65,7 +70,8 @@ function App() {
             id={todo.id}
             text={todo.text}
             completed={todo.completed}
-            handle_delete={handleDelete} />
+            handle_delete={handleDelete}
+            handle_complete={handleComplete} />
         ))}
       </TodoList>
 
