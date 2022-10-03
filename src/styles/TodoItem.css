@@ -17,3 +17,7 @@
   width: 25px;
   height: 25px;
 }
+
+.delete {
+  cursor: pointer;
+}

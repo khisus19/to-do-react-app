@@ -9,9 +9,9 @@ import TodoItem from "./components/TodoItem"
 
 function App() {
   const [todos, setTodos] = useState([
-    { text: 'Cortar cebolla', completed: true},
-    { text: 'Tomar el curso de intro a React', completed: false},
-    { text: 'Llorar con la llorona', completed: true}
+    { text: 'Cortar cebolla', completed: true, id: "1"},
+    { text: 'Tomar el curso de intro a React', completed: false, id: "2"},
+    { text: 'Llorar con la llorona', completed: true, id: "3"}
   ])
   const [todosCount, setTodosCount] = useState(0)
   const [searchInputValue, setSearchInputValue] = useState("")
@@ -26,7 +26,7 @@ function App() {
   
   useEffect(() => {
     return setTodosCount(filteredTodos.length)
-  }, [searchInputValue])
+  }, [searchInputValue, todos])
 
   function handleNewTodo(newTodo) {
     setTodos(prevTodos => ([
@@ -34,8 +34,11 @@ function App() {
     ]))
   }
 
-  function handleDelete() {
-    console.log("borrando")
+  function handleDelete(id) {
+    const newTodosArr = []
+    setTodos(prevTodos => {
+      return prevTodos.filter(item => item.id !== id)
+    })
   }
 
   function handleSearch(event) {
@@ -58,15 +61,16 @@ function App() {
       <TodoList> 
         {filteredTodos.map(todo => (
           <TodoItem 
-            key={todo.text}
+            key={todo.id}
+            id={todo.id}
             text={todo.text}
             completed={todo.completed}
-            delete={handleDelete}/>
+            handle_delete={handleDelete} />
         ))}
       </TodoList>
 
       <CreateTodoButton 
-        handleNewTodo={() => handleNewTodo({text: "Nuevo todo", completed: false})} />
+        handleNewTodo={() => handleNewTodo({text: "Nuevo todo", completed: false, id: nanoid()})} />
     </div>
   )
 }
