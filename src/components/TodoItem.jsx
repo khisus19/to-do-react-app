@@ -1,5 +1,6 @@
 import React from 'react'
 import "../styles/TodoItem.css"
+import HoverImage from "react-hover-image";
 
 export default function TodoItem(props) {
 
@@ -10,11 +11,11 @@ export default function TodoItem(props) {
       src={props.completed ? "./check-icon.svg" : "./check-icon-dark.svg"} 
       className="todo-icon" />
       <p className="todo-text">{props.text}</p>
-      <img 
+      <HoverImage 
         className="todo-icon delete"
         src="./garbage-bin.svg"
-        onClick={() => props.handle_delete(props.id)}
-      />
+        hoverSrc="./garbage-bin-red.svg"
+        onClick={() => props.handle_delete(props.id)} />
     </li>
   )
 }
