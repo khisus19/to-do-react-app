@@ -8,7 +8,7 @@ import CreateTodoButton from "./components/CreateTodoButton"
 import TodoItem from "./components/TodoItem"
 
 function App() {
-  const [todos, setTodos] = useState([
+  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("TODOS_V1")) || [
     { text: 'Cortar cebolla', completed: true, id: "1"},
     { text: 'Tomar el curso de intro a React', completed: false, id: "2"},
     { text: 'Llorar con la llorona', completed: true, id: "3"}
@@ -23,6 +23,9 @@ function App() {
 
   const completedTodos = filteredTodos.filter(item => item.completed).length
 
+  useEffect(() => {
+    localStorage.setItem("TODOS_V1", JSON.stringify(todos))
+  }, [todos])
   
   useEffect(() => {
     return setTodosCount(filteredTodos.length)
