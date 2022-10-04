@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import { nanoid } from "nanoid"
 import TodoCounter from "./components/TodoCounter"
 import TodoSearch from "./components/TodoSearch"
 import TodoList from "./components/TodoList"
@@ -11,9 +10,7 @@ import ModalContent from "./components/ModalContent"
 
 function App() {
   const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("TODOS_V1")) || [
-    { text: 'Cortar cebolla', completed: true, id: "1"},
-    { text: 'Tomar el curso de intro a React', completed: false, id: "2"},
-    { text: 'Llorar con la llorona', completed: true, id: "3"}
+    { text: 'Cortar cebolla', completed: true, id: "1"}
   ])
   const [todosCount, setTodosCount] = useState(0)
   const [searchInputValue, setSearchInputValue] = useState("")
@@ -65,6 +62,10 @@ function App() {
 
       <TodoSearch 
         search={handleSearch}/>
+      
+      <CreateTodoButton 
+        handleNewTodo={toggleModal} 
+      />
 
       <TodoList> 
         {filteredTodos.map(todo => (
@@ -78,9 +79,6 @@ function App() {
         ))}
       </TodoList>
 
-      <CreateTodoButton 
-        handleNewTodo={toggleModal} 
-      />
       {isModalOn && 
         <Modal>
           <ModalContent 
