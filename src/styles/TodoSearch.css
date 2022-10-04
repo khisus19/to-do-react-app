@@ -1,9 +1,12 @@
 input {
   margin: 5px auto 25px;
   width: 100%;
+  max-width: 420px;
   padding: 5px 8px;
   font-size: 1.2rem;
-  background-color: #e9e9ed;
-  border: 1px solid #8f8f9d;
+  background-color: var(--main-bg);
+  color: var(--white);
+  border: 1px solid var(--main-bg);
   border-radius: 5px;
+  box-shadow: var(--btn-shadow);
 }

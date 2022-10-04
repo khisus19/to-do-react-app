@@ -3,19 +3,20 @@
   width: 95%;
   max-width: 750px;
   min-height: 600px;
-  padding: 20px 40px;
+  padding: 20px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  background-color: var(--main-soft);
+  background-color: var(--app-bg);
   border-radius: 8px;
+  text-align: center;
 }
 .title {
   margin: 20px 0;
   font-size: 3rem;
   font-weight: 800;
-  color: var(--main);
+  color: var(--white);
 }
 .subtitle {
   font-size: 1.6rem;

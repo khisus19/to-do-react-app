@@ -1,13 +1,18 @@
 .todo-item {
-  margin: 15px 0;
+  margin: 20px 0;
   padding: 15px;
   list-style: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 1.4rem;
-  background-color: #e9e9ed;
+  font-weight: bold;
+  background-color: var(--main-bg);
   border-radius: 8px;
+  box-shadow: var(--btn-shadow);
+}
+.todo-item:nth-child(2n) {
+  background-color: var(--main-bg-soft);
 }
 .todo-item p {
   max-width: 80%;
@@ -19,16 +24,16 @@
 .todo-icon {
   width: 28px;
   height: 28px;
-  color: #D5D4D8;
+  color: #7D80AA;
   cursor: pointer;
 }
 .checked {
-  color: var(--main-btn);
+  color: var(--main);
 }
 .delete {
   width: 25px;
   height: 25px;
 }
 .delete:hover {
-  color: #e61919;
+  color: var(--warning);
 }
