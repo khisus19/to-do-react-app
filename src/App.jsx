@@ -6,15 +6,14 @@ import TodoSearch from "./components/TodoSearch"
 import TodoList from "./components/TodoList"
 import CreateTodoButton from "./components/CreateTodoButton"
 import TodoItem from "./components/TodoItem"
+import Modal from "./components/Modal"
+import ModalContent from "./components/ModalContent"
 
 function App() {
-  const [todos, setTodos] = useState([
-    { text: 'Cortar cebolla', completed: true, id: "1"},
-    { text: 'Tomar el curso de intro a React', completed: false, id: "2"},
-    { text: 'Llorar con la llorona', completed: true, id: "3"}
-  ])
+  const [todos, setTodos] = useState([{text: "Todo de prueba", complete: false, id: nanoid()}])
   const [todosCount, setTodosCount] = useState(0)
   const [searchInputValue, setSearchInputValue] = useState("")
+  const [isModalOn, setIsModalOn] = useState(false)
 
   const filteredTodos = todos.filter(item => {
     let regexp = RegExp(searchInputValue, 'ig')
@@ -23,16 +22,9 @@ function App() {
 
   const completedTodos = filteredTodos.filter(item => item.completed).length
 
-  
   useEffect(() => {
     return setTodosCount(filteredTodos.length)
   }, [searchInputValue, todos])
-
-  function handleNewTodo(newTodo) {
-    setTodos(prevTodos => ([
-      ...prevTodos, newTodo
-    ]))
-  }
 
   function handleDelete(id) {
     setTodos(prevTodos => {
@@ -51,8 +43,11 @@ function App() {
     })
   }
 
-  
+  function toggleModal() {
+    setIsModalOn(prev => !prev)
+  }
 
+  
   return (
     <div className="App">
       <h1 className="title">My Next Task</h1>
@@ -76,7 +71,16 @@ function App() {
       </TodoList>
 
       <CreateTodoButton 
-        handleNewTodo={() => handleNewTodo({text: "Nuevo todo", completed: false, id: nanoid()})} />
+        handleNewTodo={toggleModal} 
+      />
+      {isModalOn && 
+        <Modal>
+          <ModalContent 
+          cancel_modal={toggleModal} 
+          todos={todos}
+          setTodos={setTodos}
+          />
+        </Modal>}
     </div>
   )
 }
