@@ -10,7 +10,11 @@ import Modal from "./components/Modal"
 import ModalContent from "./components/ModalContent"
 
 function App() {
-  const [todos, setTodos] = useState([{text: "Todo de prueba", complete: false, id: nanoid()}])
+  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("TODOS_V1")) || [
+    { text: 'Cortar cebolla', completed: true, id: "1"},
+    { text: 'Tomar el curso de intro a React', completed: false, id: "2"},
+    { text: 'Llorar con la llorona', completed: true, id: "3"}
+  ])
   const [todosCount, setTodosCount] = useState(0)
   const [searchInputValue, setSearchInputValue] = useState("")
   const [isModalOn, setIsModalOn] = useState(false)
@@ -22,6 +26,10 @@ function App() {
 
   const completedTodos = filteredTodos.filter(item => item.completed).length
 
+  useEffect(() => {
+    localStorage.setItem("TODOS_V1", JSON.stringify(todos))
+  }, [todos])
+  
   useEffect(() => {
     return setTodosCount(filteredTodos.length)
   }, [searchInputValue, todos])
