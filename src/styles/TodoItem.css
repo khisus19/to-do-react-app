@@ -9,12 +9,26 @@
   background-color: #e9e9ed;
   border-radius: 8px;
 }
+.todo-item p {
+  max-width: 80%;
+  text-align: center;
+}
 .completed {
   text-decoration: line-through;
 }
-
 .todo-icon {
+  width: 28px;
+  height: 28px;
+  color: #D5D4D8;
+  cursor: pointer;
+}
+.checked {
+  color: var(--main-btn);
+}
+.delete {
   width: 25px;
   height: 25px;
-  cursor: pointer;
+}
+.delete:hover {
+  color: #e61919;
 }
