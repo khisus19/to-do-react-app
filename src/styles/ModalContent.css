@@ -10,7 +10,7 @@
   border-radius: 10px;
 }
 .modal-title {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Karla', sans-serif;
   font-size: 2rem;
   font-weight: 700;
 }
@@ -20,7 +20,7 @@
   height: 200px;
   padding: 10px;
   border-radius: 5px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Karla', sans-serif;
   font-size: 1.6rem;
   font-weight: 500;
   color: var(--dark-blue);

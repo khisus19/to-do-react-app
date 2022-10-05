@@ -56,16 +56,18 @@ function App() {
   return (
     <div className="App">
       <h1 className="title">My Next Task</h1>
+      <img src="./check-list-design.webp" 
+        className="checklist" />
+
+      <CreateTodoButton 
+        handleNewTodo={toggleModal} />
+
       <TodoCounter 
         todosCount={todosCount}
-        completed_num={completedTodos}/>
+        completed_num={completedTodos} 
+        todos={todos} />
 
-      <TodoSearch 
-        search={handleSearch}/>
-      
-      <CreateTodoButton 
-        handleNewTodo={toggleModal} 
-      />
+      {todos.length !== 0 && <TodoSearch search={handleSearch} />}
 
       <TodoList> 
         {filteredTodos.map(todo => (
