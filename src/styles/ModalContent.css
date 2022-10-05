@@ -16,7 +16,6 @@
 }
 .textarea {
   min-width: 30vw;
-  width: 300px;
   height: 200px;
   padding: 10px;
   border-radius: 5px;
@@ -57,4 +56,7 @@
 .create:active {
   background-color: var(--main-btn-pressed);
   box-shadow: none;
+}
+.inactive {
+  opacity: 0.3;
 }

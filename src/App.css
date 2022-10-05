@@ -45,6 +45,9 @@
   background-color: var(--main-btn-pressed);
   box-shadow: none;
 }
+.btn:hover {
+  background-color: var(--main-btn-pressed);
+}
 .checklist {
   width: 80px;
 }

@@ -42,7 +42,9 @@ export default function ModalContent({ cancel_modal, todos, setTodos}) {
           onClick={cancel_modal}
           type="button">Cancel</button>
         <button 
-          className="modal-btn create">Create</button>
+          className={newTodo.text !== "" ? "modal-btn create" : "modal-btn inactive"}
+          disabled={newTodo.text === ""}
+          >Create</button>
       </div>
     </form>
   )
