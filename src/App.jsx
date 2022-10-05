@@ -9,9 +9,7 @@ import Modal from "./components/Modal"
 import ModalContent from "./components/ModalContent"
 
 function App() {
-  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("TODOS_V1")) || [
-    { text: 'Cortar cebolla', completed: true, id: "1"}
-  ])
+  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("TODOS_V1")) || [])
   const [todosCount, setTodosCount] = useState(0)
   const [searchInputValue, setSearchInputValue] = useState("")
   const [isModalOn, setIsModalOn] = useState(false)
